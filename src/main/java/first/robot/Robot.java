@@ -5,6 +5,9 @@
  */
 package first.robot;
 
+import first.robot.mechanisms.DriveTrain;
+import first.robot.mechanisms.Feeder;
+import first.robot.mechanisms.IntakeLauncher;
 import org.wpilib.command3.Scheduler;
 import org.wpilib.framework.OpModeRobot;
 
@@ -17,6 +20,10 @@ import org.wpilib.framework.OpModeRobot;
  */
 public class Robot extends OpModeRobot {
 
+  public Feeder feeder = new Feeder();
+  public IntakeLauncher intakeLauncher = new IntakeLauncher();
+  public DriveTrain driveTrain = new DriveTrain();
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -26,6 +33,9 @@ public class Robot extends OpModeRobot {
   @Override
   public void robotPeriodic() {
     Scheduler.getDefault().run();
+    feeder.periodic();
+    intakeLauncher.periodic();
+    driveTrain.periodic();
   }
 
   @Override
