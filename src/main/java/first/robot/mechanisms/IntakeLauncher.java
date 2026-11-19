@@ -4,6 +4,8 @@
 
 package first.robot.mechanisms;
 
+import static org.wpilib.units.Units.Seconds;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import first.robot.simulation.SingleFlywheelSim;
@@ -42,7 +44,7 @@ public class IntakeLauncher implements Mechanism {
     return run(coroutine -> {
           while (true) {
             motor.setThrottle(0.9);
-            // coroutine.wait(Seconds.of(2.0));
+            coroutine.wait(Seconds.of(2.0));
             coroutine.yield();
           }
         })
