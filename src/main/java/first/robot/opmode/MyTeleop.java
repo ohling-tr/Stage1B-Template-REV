@@ -19,14 +19,18 @@ public class MyTeleop extends PeriodicOpMode {
   public MyTeleop(Robot robot) {
     this.robot = robot;
 
-    xbox.leftBumper().whileTrue(robot.intakeLauncher.intake()).whileTrue(robot.feeder.intake());
+    xbox.leftBumper()
+        .whileTrue(this.robot.intakeLauncher.intake())
+        .whileTrue(this.robot.feeder.intake());
 
-    xbox.rightBumper().whileTrue(robot.intakeLauncher.shoot()).whileTrue(robot.feeder.feed());
+    xbox.rightBumper()
+        .whileTrue(this.robot.intakeLauncher.shoot())
+        .whileTrue(this.robot.feeder.feed());
 
-    xbox.a().whileTrue(robot.intakeLauncher.outtake()).whileTrue(robot.feeder.outtake());
+    xbox.a().whileTrue(this.robot.intakeLauncher.outtake()).whileTrue(this.robot.feeder.outtake());
 
-    robot.driveTrain.setDefaultCommand(
-        robot.driveTrain.arcadeDrive(() -> xbox.getLeftY(), () -> xbox.getRightX()));
+    this.robot.driveTrain.setDefaultCommand(
+        this.robot.driveTrain.arcadeDrive(() -> xbox.getLeftY(), () -> xbox.getRightX()));
   }
 
   @Override
